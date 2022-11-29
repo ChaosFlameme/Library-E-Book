@@ -20,9 +20,12 @@
 > All the user, administrators can be included.
 ------------------------------------------------------------------
 ## Pole
-### -The pages based on the template, all good looking with out real functions
-### -Realise the real functions on the site
-### -Connection between the site and the database 
+### - The pages based on the template, all good looking with out real functions
+> Using: HTML, CSS, Bootsrap
+### - Realise the real functions on the site(kinda mixed with below one)
+> Using: HTML, Javascript, PHP
+### - Connection between the site and the database 
+> Using: PHP, mysql, (Javascript?)
 
 ------------------------------------------------------------------
 ## Minimum requirements of the system:
