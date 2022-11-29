@@ -18,8 +18,11 @@
 > All the information about a book
 ### User database
 > All the user, administrators can be included.
-
-
+------------------------------------------------------------------
+## Pole
+### -The pages based on the template, all good looking with out real functions
+### -Realise the real functions on the site
+### -Connection between the site and the database 
 
 ------------------------------------------------------------------
 ## Minimum requirements of the system:
