@@ -28,6 +28,17 @@
 > Using: PHP, mysql, (Javascript?)
 
 ------------------------------------------------------------------
+## Functions required:
+- [ ] Login System
+- [ ] Register System
+- [ ] Personal book management:
+    - [ ] Add book 
+    - [ ] Remove book
+    - [ ] Download book
+    - [ ] 
+- [ ] Admin System
+
+------------------------------------------------------------------
 ## Minimum requirements of the system:
 - [ ] Minimum 2 user roles should be included in the system.
 - [ ] HTML and Cascading Style Sheet (CSS) Bootstrap templates are allowed to use. However, modification on the templates should be done and evident.
