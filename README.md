@@ -31,12 +31,15 @@
 ## Functions required:
 - [ ] Login System
 - [ ] Register System
-- [ ] Personal book management:
+- [ ] Personal user book management:
     - [ ] Add book 
     - [ ] Remove book
     - [ ] Download book
-    - [ ] 
-- [ ] Admin System
+    - [ ] Review added books
+    - [ ] Subscription system
+- [ ] Admin System:
+    - [ ] Manage the list of the user
+    - [ ] Access to the user's management
 
 ------------------------------------------------------------------
 ## Minimum requirements of the system:
