@@ -9,8 +9,7 @@ if (isset($_POST['btnRegister'])) {
     $sql = "SELECT MAX(uid) AS maxuid FROM users";
     $result = $connection->query($sql);
     $row = mysqli_fetch_assoc($result);
-    //$uid = $row['maxuid']+1;
-    $uid=51;
+    $uid = $row['maxuid']+1;
 
     $query = "INSERT INTO users (uid, username, email, password) 
     VALUES ('$uid', '$username','$email','$password')";
@@ -27,6 +26,8 @@ if (isset($_POST['btnRegister'])) {
 }
 mysqli_close($connection);
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +45,6 @@ mysqli_close($connection);
         Password: <input type="password" name="txtPassword" id=""><br>
         <br>
         <input type="submit" value="Register" name="btnRegister">
-
     </form>
 </body>
 
