@@ -31,6 +31,9 @@
 ## Functions required:
 - [ ] Login System
 - [ ] Register System
+    - [X] Basic function
+    - [ ] check email is the same
+    
 - [ ] Personal user book management:
     - [ ] Add book 
     - [ ] Remove book
