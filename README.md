@@ -40,6 +40,11 @@
 - [ ] Admin System:
     - [ ] Manage the list of the user
     - [ ] Access to the user's management
+------------------------------------------------------------------
+## Database required:
+### Book
+
+### Users
 
 ------------------------------------------------------------------
 ## Minimum requirements of the system:
