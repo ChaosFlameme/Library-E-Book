@@ -14,6 +14,11 @@
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
 
+    <?php
+    require $_SERVER['DOCUMENT_ROOT']."/Library-E-Book/php/login.php";
+    session_start();
+
+    ?>
 </head>
 <body>
     
@@ -69,17 +74,17 @@
 
     <div id="close-login-btn" class="fas fa-times"></div>
 
-    <form action="">
+    <form action="" method="POST">
         <h3>sign in</h3>
         <span>username</span>
-        <input type="email" name="" class="box" placeholder="enter your email" id="">
+        <input type="text" name="txtUsername" class="box" placeholder="enter your username" id="txtUsername">
         <span>password</span>
-        <input type="password" name="" class="box" placeholder="enter your password" id="">
+        <input type="password" name="txtPassword" class="box" placeholder="enter your password" id="txtPassword">
         <div class="checkbox">
             <input type="checkbox" name="" id="remember-me">
             <label for="remember-me"> remember me</label>
         </div>
-        <input type="submit" value="sign in" class="btn">
+        <input type="submit" value="login" name="login" class="btn">
         <p>forget password ? <a href="#">click here</a></p>
         <p>don't have an account ? <a href="#">create one</a></p>
     </form>
@@ -792,12 +797,12 @@
 
 <!-- footer section ends -->
 
-<!-- loader  -->
+<!-- loader 
 
 <div class="loader-container">
     <img src="image/loader-img.gif" alt="">
 </div>
-
+ -->
 
 
 
