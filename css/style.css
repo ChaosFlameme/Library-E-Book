@@ -196,7 +196,18 @@ section{
     background:var(--dark-color);
 }
 
-.login-form-container{
+.register-form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:rgba(255,255,255,.9);
+    top:0; right:-105%;
+    z-index: 10000;
+    height:100%;
+    width:100%;
+}
+
+.real-login-form-container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -208,7 +219,7 @@ section{
     width:100%;
 }
 
-.login-form-container.active{
+.real-login-form-container.active{
     right:0;
 }
 

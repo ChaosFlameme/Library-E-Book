@@ -10,11 +10,15 @@
         $row=mysqli_fetch_assoc($result);
         $count =mysqli_num_rows($result);
         if($count == 1){
+
+            $_SESSION['username']=$row['username'];
+            $_SESSION['email']=$row['email'];
+            $_SESSION['uid']=$row['uid'];
             header("Location: /Library-E-Book/php/oyasumi.php");
-            function_alert("Yeah seem it works lol");
+            
             
         }else{
-            function_alert("Nah can't sign in.");
+            echo '<script>alert("register sucessfully!")</script>';
         }
     }
 

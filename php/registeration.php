@@ -9,19 +9,17 @@ if (isset($_POST['btnRegister'])) {
     $sql = "SELECT MAX(uid) AS maxuid FROM users";
     $result = $connection->query($sql);
     $row = mysqli_fetch_assoc($result);
-    $uid = $row['maxuid']+1;
+    $uid = $row['maxuid'] + 1;
 
     $query = "INSERT INTO users (uid, username, email, password) 
     VALUES ('$uid', '$username','$email','$password')";
 
     if (mysqli_query($connection, $query)) {
-        echo 'Record successfully added!';
-        //redirect
-        //header ("Location: list.php");
-        //redirect with delay
-        //header("refresh:2; url=list2.php");
+        echo '<script>alert("Register sucessfully!")</script>';
+        header("refresh:0;  url=/Library-E-Book/index.php");
+
     } else {
-        echo 'Error in inserting data. Please try again.';
+        echo '<script>alert("Register sucessfully!")</script>';
     }
 }
 mysqli_close($connection);
@@ -36,16 +34,33 @@ mysqli_close($connection);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registeration</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
-    <form action="" method="POST">
-        Username: <input type="text" name="txtUsername"><br>
-        Email Address: <input type="text" name="txtEmail"><br>
-        Password: <input type="password" name="txtPassword" id=""><br>
-        <br>
-        <input type="submit" value="Register" name="btnRegister">
-    </form>
+    <div class="login-form-container register-form-container">
+        <form action="" method="POST">
+            <h3>register</h3>
+            <span>username</span>
+            <input type="text" name="txtUsername" class="box" placeholder="enter your username" id="txtUsername">
+            <span>email</span>
+            <input type="email" name="txtEmail" class="box" placeholder="enter your email" id="txtEmail ">
+            <span>password</span>
+            <input type="password" name="txtPassword" class="box" placeholder="enter your password" id="txtPassword">
+            <div class="checkbox">
+                <input type="checkbox" name="" id="agree-terms">
+                <label for="agree-terms">I agree the terms of services of this site</label>
+            </div>
+            <input type="submit" value="register" name="register" class="btn">
+        </form>
+    </div>
 </body>
 
 </html>

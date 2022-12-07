@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complete Responsive Online Boot Store Website Design Tutorial</title>
+    <title>E-Library</title>
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -16,6 +16,7 @@
 
     <?php
     require $_SERVER['DOCUMENT_ROOT']."/Library-E-Book/php/login.php";
+
     session_start();
 
     ?>
@@ -70,7 +71,7 @@
 
 <!-- login form  -->
 
-<div class="login-form-container">
+<div class="login-form-container real-login-form-container">
 
     <div id="close-login-btn" class="fas fa-times"></div>
 
@@ -86,7 +87,7 @@
         </div>
         <input type="submit" value="login" name="login" class="btn">
         <p>forget password ? <a href="#">click here</a></p>
-        <p>don't have an account ? <a href="#">create one</a></p>
+        <p>don't have an account ? <a href="">create one</a></p>
     </form>
 
 </div>

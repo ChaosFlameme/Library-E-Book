@@ -2,8 +2,7 @@
 include "misc.php";
 
 
-echo $_SERVER['DOCUMENT_ROOT'];
-
-function_alert("Welcome to Geeks for Geeks");
+echo '<script>alert("register sucessfully!")</script>';
+header("refresh:0; url=/Library-E-Book/index.php");
 
 ?>
