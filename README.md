@@ -32,7 +32,7 @@
 - [ ] Login System
 - [ ] Register System
     - [X] Basic function
-    - [ ] check email is the same
+    - [X] check email is the same
     
 - [ ] Personal user book management:
     - [ ] Add book 
