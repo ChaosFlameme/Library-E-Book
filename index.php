@@ -38,13 +38,18 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-heart" hidden></a>
                 <a href="#" class="fas fa-shopping-cart"></a>
+
+                <div id="login-btn" class="fas fa-user" ></div>
                 <?php  if (empty($_SESSION['username'])) { ?>
-                <div id="login-btn" class="fas fa-user"></div>
                 <?php } ?>
+                
                 <?php if (!empty($_SESSION['username'])) {  ?>
-                <a href="#" class="fas fa-user"></a>    
+                <script>
+                    document.getElementById("login-btn").style.display="none";
+                </script>
+                <!--a href="#" class="fas fa-user"></a--->  
                 <a href="../Library-E-Book/php/logout.php" class="fas fa-sign-out-alt"></a>           
                 <?php } ?>
             </div>

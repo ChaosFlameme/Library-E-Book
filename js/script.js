@@ -185,3 +185,12 @@ function IsRememberMe() {
     localStorage.checkbox = "";
   }
 }
+
+function loginBtnDisplay(bval) {
+  var loginBtn = document.getElementById("login-btn");
+  if (bval == 1) {
+    loginBtn.style.display = "flex";
+  } else {
+    loginBtn.style.display = "none";
+  }
+}
