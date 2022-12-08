@@ -14,11 +14,12 @@
             $_SESSION['username']=$row['username'];
             $_SESSION['email']=$row['email'];
             $_SESSION['uid']=$row['uid'];
-            header("Location: /Library-E-Book/php/oyasumi.php");
+
+            //header("Location: /Library-E-Book/index.php");
             
             
         }else{
-            echo '<script>alert("register sucessfully!")</script>';
+            echo '<script>alert("Login failed.")</script>';
         }
     }
 

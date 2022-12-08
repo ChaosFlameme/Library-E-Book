@@ -1,36 +1,37 @@
 searchForm = document.querySelector('.search-form');
 
-document.querySelector('#search-btn').onclick = () =>{
+document.querySelector('#search-btn').onclick = () => {
   searchForm.classList.toggle('active');
 }
 
 let loginForm = document.querySelector('.real-login-form-container');
 
-document.querySelector('#login-btn').onclick = () =>{
+document.querySelector('#login-btn').onclick = () => {
   loginForm.classList.toggle('active');
+  checkRememberMe();
 }
 
-document.querySelector('#close-login-btn').onclick = () =>{
+document.querySelector('#close-login-btn').onclick = () => {
   loginForm.classList.remove('active');
 }
 
-window.onscroll = () =>{
+window.onscroll = () => {
 
   searchForm.classList.remove('active');
 
-  if(window.scrollY > 80){
+  if (window.scrollY > 80) {
     document.querySelector('.header .header-2').classList.add('active');
-  }else{
+  } else {
     document.querySelector('.header .header-2').classList.remove('active');
   }
 
 }
 
-window.onload = () =>{
+window.onload = () => {
 
-  if(window.scrollY > 80){
+  if (window.scrollY > 80) {
     document.querySelector('.header .header-2').classList.add('active');
-  }else{
+  } else {
     document.querySelector('.header .header-2').classList.remove('active');
   }
 
@@ -38,16 +39,16 @@ window.onload = () =>{
 
 }
 
-function loader(){
+function loader() {
   document.querySelector('.loader-container').classList.add('active');
 }
 
-function fadeOut(){
+function fadeOut() {
   setTimeout(loader, 4000);
 }
 
 var swiper = new Swiper(".books-slider", {
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -68,7 +69,7 @@ var swiper = new Swiper(".books-slider", {
 
 var swiper = new Swiper(".featured-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -96,7 +97,7 @@ var swiper = new Swiper(".featured-slider", {
 
 var swiper = new Swiper(".arrivals-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -117,8 +118,8 @@ var swiper = new Swiper(".arrivals-slider", {
 
 var swiper = new Swiper(".reviews-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -139,8 +140,8 @@ var swiper = new Swiper(".reviews-slider", {
 
 var swiper = new Swiper(".blogs-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -158,3 +159,29 @@ var swiper = new Swiper(".blogs-slider", {
     },
   },
 });
+
+function checkRememberMe() {
+  console.log("Im here: check remember me");
+  const rmCheck = document.getElementById("remember-me");
+  const usernameInput = document.getElementById("txtUsername");
+  if (localStorage.checkbox && localStorage.checkbox !== "") {
+    rmCheck.setAttribute("checked", "checked");
+    usernameInput.value = localStorage.username;
+  } else {
+    rmCheck.removeAttribute("checked");
+    usernameInput.value = "";
+  }
+}
+
+function IsRememberMe() {
+  console.log("Im here: is remember me");
+  const rmCheck = document.getElementById("remember-me");
+  const usernameInput = document.getElementById("txtUsername");
+  if (rmCheck.checked && usernameInput.value !== "") {
+    localStorage.username = usernameInput.value;
+    localStorage.checkbox = rmCheck.value;
+  } else {
+    localStorage.username = "";
+    localStorage.checkbox = "";
+  }
+}
