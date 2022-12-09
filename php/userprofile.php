@@ -2,7 +2,6 @@
 include "dbConnection.php";
 session_start();
 
-
 ?>
 
 <html>
@@ -12,4 +11,5 @@ session_start();
     <form action="changePassword.php">
         <input type="submit" value="Change your password">
     </form>
+    
 </html>
