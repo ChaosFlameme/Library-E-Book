@@ -28,6 +28,29 @@
 > Using: PHP, mysql, (Javascript?)
 
 ------------------------------------------------------------------
+##TO DO LIST
+- [ ] Profile page
+    - [ ] Showing Username  sql
+    - [ ] Showing Email     sql
+    - [ ] Change password   sql
+    - [ ] Showing renting books 
+    - [ ] Manage renting books
+- [ ] Main page
+- [ ] Book detail page
+    - [ ] Rent for user
+- [ ] Book browsing page
+
+
+- [ ] Adminstartor
+
+
+
+
+
+------------------------------------------------------------------
+
+
+
 ## Functions required:
 - [ ] Login System
 - [ ] Register System

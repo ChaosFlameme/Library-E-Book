@@ -49,10 +49,6 @@ if (isset($_POST['register'])) {
         } else {
             echo '<script>alert("Register Failed!")</script>';
         }
-    }else{
-        foreach($errors as $error){
-            echo "value <br>";
-        }
     }
 }
 
