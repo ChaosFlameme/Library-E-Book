@@ -1,5 +1,6 @@
 <?php
 include "dbConnection.php";
+include "userBookRemove.php";
 session_start();
 
 $uid = $_SESSION['uid'];
@@ -19,6 +20,7 @@ mysqli_close($connection);
 <h1 align=center><?php echo $_SESSION['username']?>'s Book list</h1>
 <table border='1' cellpadding=5 cellspacing=2>
     <tr>
+        <th>Action</th>
         <th>ISBN</th>
         <th>Book Title</th>
         <th>Author </th>
@@ -30,6 +32,13 @@ mysqli_close($connection);
     <?php while ($row = mysqli_fetch_assoc($results)) { ?>
 
         <tr>
+            <td>
+                <form action="" method="post">
+                    <input type="hidden" name="ISBN" value="<?php echo $row['ISBN']; ?>">
+                    <a href="#"><input type="button" value="Detail"></a> | 
+                    <input type="submit" value="remove" name="removeBook">
+                </form>
+            </td>
             <td><?php echo $row['ISBN']; ?> </td>
             <td><?php echo $row['Book-Title']; ?> </td>
             <td><?php echo $row['Book-Author']; ?> </td>

@@ -3,21 +3,21 @@
 include "dbConnection.php";
 session_start();
 
-$bookId;
-$userId;
+if (isset($_POST['removeBook'])) {
 
-if(!empty($_SESSION['username'])){
+    $bookId = $_POST['ISBN'];
+    $userId = $_SESSION['uid'];
     
-    $remove_query="DELETE FROM usersbookshelf 
-    WHERE ISBN = '$bookId' AND userID = '$userId' ";
-    if(mysqli_query($connection,$remove_query)){
-        echo '<script>alert("Remove sucessfully!")</script>';
-    }else{
-        echo '<script>alert("Process failed")</script>';
+    if (!empty($_SESSION['username'])) {
+
+        $remove_query = "DELETE FROM `usersbookshelf` 
+        WHERE ISBN = '$bookId' AND userID = '$userId' ";
+        if (mysqli_query($connection, $remove_query)) {
+            echo '<script>alert("Remove sucessfully!")</script>';
+        } else {
+            echo '<script>alert("Process failed")</script>';
+        }
+    } else {
+        echo '<script>alert("You need to login first!")</script>';
     }
-    
-}else{
-    echo '<script>alert("You need to login first!")</script>';
 }
-
-?>

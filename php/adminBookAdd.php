@@ -2,27 +2,32 @@
 include "dbConnection.php";
 
 if (isset($_POST['addBook'])) {
-    $ISBN = $_POST[''];
-    $bookTitle = $_POST[''];
-    $author = $_POST[''];
-    $yearPublication = $_POST[''];
-    $publisher=$_POST[''];
-    $cover_s = $_POST[''];
-    $cover_m = $_POST[''];
-    $cover_l = $_POST[''];
-
-
+    $ISBN = $_POST['addISBN'];
+    $bookTitle = $_POST['addBookTitle'];
+    $author = $_POST['addAuthor'];
+    $yearPublication = $_POST['addYear'];
+    $publisher=$_POST['addPublisher'];
+    // $cover_s = $_POST['addImageS'];
+    // $cover_m = $_POST['addImageM'];
+    $cover_l = $_POST['addImageL'];
+    $noImage = "https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png";
+    
     $errors = array();
+
+    if(empty($cover_l)){
+
+        $cover_l=$noImage;
+    }
 
     //Validation
     if (empty($ISBN)) {
         array_push($errors, "ISBN is required");
     }
     if (empty($bookTitle)) {
-        array_push($errors, "Email is required");
+        array_push($errors, "book title is required");
     }
     if (empty($author)) {
-        array_push($errors, "Password is required");
+        array_push($errors, "Author is required");
     }
 
 
@@ -37,48 +42,61 @@ if (isset($_POST['addBook'])) {
 
     //Check if there's no error
     if (count($errors) == 0) {
+        echo $ISBN . "|";
+        echo $bookTitle. "|";
+        echo $author. "|";
+        echo $yearPublication. "|";
+        echo $publisher. "|";
+        echo $cover_l;
 
-        $query = "INSERT INTO books 
-    VALUES ('$ISBN', '$bookTitle','$author','$yearPublication','$publisher', '$cover_s', '$cover_m', '$cover_l')";
+        $query = "INSERT INTO `books` (`ISBN`, `Book-Title`, `Book-Author`, `Year-Publication`, `Publisher`, `Image-URL-L`)
+    VALUES ('$ISBN', '$bookTitle','$author','$yearPublication','$publisher', '$cover_l')";
 
         if (mysqli_query($connection, $query)) {
-            echo '<script>alert("Register sucessfully!")</script>';
+            echo '<script>alert("Book added sucessfully!")</script>';
             
         } else {
-            echo '<script>alert("Register Failed!")</script>';
+            echo '<script>alert("Adding Failed!")</script>';
+        }
+    }else{
+        foreach($errors as $error) {
+            echo $error, '<br>';
         }
     }
 }
 
 mysqli_close($connection);
+
+//https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png
 ?>
 
 
 <html>
 <body>
-    <div class="login-form-container register-form-container">
         <form action="" method="POST">
-            <h3>register</h3>
-            <span>username</span>
-            <input type="text" name="txtUsername" class="box" placeholder="enter your username" id="txtUsername" required>
+            <h3>Add book</h3>
+            <label for="addISBN">ISBN</label>
+            <input type="text" name="addISBN"  id="addISBN" class="box" placeholder="enter ISBN" required>
+            
+            <label for="addBookTitle">Book Title</label>
+            <input type="text" name="addBookTitle"  id="addBookTitle" class="box" placeholder="enter book title" required>
+            
+            <label for="addAuthor">Author</label>
+            <input type="text" name="addAuthor"  id="addAuthor" class="box" placeholder="enter author" required>
+            
+            <label for="addYear">Year</label>
+            <input type="text" name="addYear"  id="addYear" class="box" placeholder="enter year" required>
+            
+            <label for="addPublisher">Publisher</label>
+            <input type="text" name="addPublisher"  id="addPublisher" class="box" placeholder="enter publisher" required>
+            
+            <label for="addPublisher">Cover</label>
+            <input type="text" name="addImageL"  id="addImageL" class="box" placeholder="enter image url">
+            
 
-            <span>email</span>
-            <input type="email" name="txtEmail" class="box" placeholder="enter your email" id="txtEmail " required>
-
-            <span>password</span>
-            <input type="password" name="txtPassword" class="box" placeholder="enter your password" id="txtPassword" required>
-
-            <span>confirm your password</span>
-            <input type="password" name="txtPassword" class="box" placeholder="re-enter your password" id="txtPasswordCon" required>
-            <div class="checkbox">
-                <input required type="checkbox" name="" id="agree-terms">
-                <label for="agree-terms">I agree with
-                    <a href="#">the terms of services</a></label>
-            </div>
-            <input type="submit" value="register" name="register" class="btn">
-            <p>Already have an account ? <a href="../index.php">Back to main page</a></p>
+            <input type="submit" value="AddBook" name="addBook" class="btn">
+            
         </form>
-    </div>
 </body>
 
 </html>
