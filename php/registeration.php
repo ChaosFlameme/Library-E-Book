@@ -1,6 +1,7 @@
 <?php
 include "dbConnection.php";
 
+
 if (isset($_POST['register'])) {
     $username = $_POST['txtUsername'];
     $email = $_POST['txtEmail'];
@@ -26,6 +27,7 @@ if (isset($_POST['register'])) {
     $email_check_query = "SELECT * FROM users where email = '$email' LIMIT 1";
     $result = mysqli_query($connection, $email_check_query);
     $user = mysqli_fetch_assoc($result);
+
     if ($user) {
         if ($user['email'] === $email) {
             array_push($errors, "Email already registered");
@@ -34,6 +36,7 @@ if (isset($_POST['register'])) {
 
     //Check if there's no error
     if (count($errors) == 0) {
+        echo "<script>console.log('Are we here?'); </script>";
         //Get uid from sql
         $sql = "SELECT MAX(uid) AS maxuid FROM users";
         $result = $connection->query($sql);
@@ -48,7 +51,14 @@ if (isset($_POST['register'])) {
             header("refresh:0;  url=/Library-E-Book/index.php");
         } else {
             echo '<script>alert("Register Failed!")</script>';
+            
         }
+    }else{
+        foreach($errors as $error) {
+            echo $error, '<br>';
+        }
+        //echo '<script>alert("Register Failed!")</script>';
+        //header("refresh:20;  url=/Library-E-Book/php/registeration.php");
     }
 }
 
@@ -88,7 +98,7 @@ mysqli_close($connection);
             <input type="password" name="txtPassword" class="box" placeholder="enter your password" id="txtPassword" required>
             
             <span>confirm your password</span>
-            <input type="password" name="txtPassword" class="box" placeholder="re-enter your password" id="txtPasswordCon" required>
+            <input type="password" name="txtPasswordCon" class="box" placeholder="re-enter your password" id="txtPasswordCon" required>
             <div class="checkbox">
                 <input required type="checkbox" name="" id="agree-terms">
                 <label for="agree-terms">I agree with

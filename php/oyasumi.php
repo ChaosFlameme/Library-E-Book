@@ -2,6 +2,9 @@
 session_start();
 
 
+//Detect duplicated rows
+//"DELETE FROM usersbookshelf WHERE userID NOT IN (SELECT * FROM (SELECT MAX( userID) FROM usersbookshelf GROUP BY ISBN) AS uback);"
+
 ?>
 
 

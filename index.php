@@ -38,19 +38,24 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-                <a href="#" class="fas fa-heart" hidden></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
+              
+                <!---a href="#" class="fas fa-shopping-cart"></a-->
 
-                <div id="login-btn" class="fas fa-user" ></div>
-                <?php  if (empty($_SESSION['username'])) { ?>
+                <div id="login-btn" class="fas fa-user"></div>
+                <?php if (empty($_SESSION['username'])) { ?>
                 <?php } ?>
-                
+
                 <?php if (!empty($_SESSION['username'])) {  ?>
-                <script>
-                    document.getElementById("login-btn").style.display="none";
-                </script>
-                <!--a href="#" class="fas fa-user"></a--->  
-                <a href="../Library-E-Book/php/logout.php" class="fas fa-sign-out-alt"></a>           
+                    <a href="#" class="fas fa-heart"></a>
+                    <script>
+                        document.getElementById("login-btn").style.display = "none";
+                    </script>
+                    <?php if (!empty($_SESSION['adminName'])) { ?>
+                        <a href="../Library-E-Book/php/adminProfile.php" class="fas fa-user-graduate"></a>
+                    <?php } else { ?> 
+                        <a href="../Library-E-Book/php/userprofile.php" class="fas fa-user"></a>
+                    <?php } ?>
+                    <a href="../Library-E-Book/php/logout.php" class="fas fa-sign-out-alt"></a>
                 <?php } ?>
             </div>
             <?php
@@ -110,6 +115,8 @@
 
             <p>forget password ? <a href="#">click here</a></p>
             <p>don't have an account ? <a href="../Library-E-Book/php/registeration.php">create one</a></p>
+            <p><a href="../Library-E-Book/php/loginAdmin.php">Admin Login</a></p>
+
         </form>
 
     </div>

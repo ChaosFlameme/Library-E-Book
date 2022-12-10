@@ -1,6 +1,6 @@
 <?php
     include "dbConnection.php";
-    include "misc.php";
+    session_destroy();
     session_start();
     if(isset($_POST['login'])){
         $username =$_POST['txtUsername'];

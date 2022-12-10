@@ -62,7 +62,6 @@
     - [ ] Remove book
     - [ ] Download book
     - [ ] Review added books
-    - [ ] Subscription system
 - [ ] Admin System:
     - [ ] Manage the list of the user
     - [ ] Access to the user's management
@@ -74,11 +73,11 @@
 
 ------------------------------------------------------------------
 ## Minimum requirements of the system:
-- [ ] Minimum 2 user roles should be included in the system.
+- [X] Minimum 2 user roles should be included in the system.
 - [ ] HTML and Cascading Style Sheet (CSS) Bootstrap templates are allowed to use. However, modification on the templates should be done and evident.
 - [ ] Use appropriate graphics in the system.
 - [ ] Create adequate JavaScript by own.
 - [ ] Generate dynamic web page content using ~~Node.js~~ PHP
-- [ ] Pages should be working with Database technology (using MySQL)
-- [ ] Perform create, read, update and delete together with login (and sign up) functionality to access the pages
-- [ ] Form Validation and User Authentication.
+- [X] Pages should be working with Database technology (using MySQL)
+- [X] Perform create, read, update and delete together with login (and sign up) functionality to access the pages
+- [X] Form Validation and User Authentication.
