@@ -119,6 +119,7 @@ section {
     display: flex;
     align-items: center;
     border-radius: .5rem;
+    visibility: hidden;
 }
 
 .search-form input {
@@ -311,6 +312,7 @@ section {
 table {
     margin-right: 10%;
     margin-left: 10%;
+    overflow-x: auto;
 }
 
 .add-book {
@@ -981,12 +983,14 @@ td {
         position: relative;
     }
 
+
     .header .header-1 .search-form {
         position: absolute;
         top: -115%;
         right: 2rem;
         width: 90%;
         box-shadow: var(--box-shadow);
+
     }
 
     .header .header-1 .search-form.active {

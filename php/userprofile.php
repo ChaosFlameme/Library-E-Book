@@ -8,7 +8,7 @@ session_start();
 <html lang="en">
 
 <style>
-    
+
 </style>
 
 <head>
@@ -38,7 +38,7 @@ session_start();
             <h1>Welcome back <?php echo $_SESSION['username']; ?></h1>
 
             <div class="icons">
-                
+
 
                 <!---a href="#" class="fas fa-shopping-cart"></a-->
 
@@ -49,11 +49,11 @@ session_start();
                     <script>
                         document.getElementById("login-btn").style.display = "none";
                     </script>
-                    
+
                     <a href="./logout.php" class="fas fa-sign-out-alt"></a>
                 <?php } ?>
             </div>
-            
+
 
         </div>
 
@@ -67,15 +67,24 @@ session_start();
 
     </header>
 
+    <?php if (!empty($_SESSION['username'])) { ?>
 
-    <div class="card">
-        <h1><?php echo $_SESSION['username']; ?></h1>
-        <p class="title">Member</p>
-        <h2>Email: <?php echo $_SESSION['email']; ?> </h2>
-        <h2>UID: <?php echo $_SESSION['uid']; ?></h2>
-        <p><a href="./changePassword.php"><button>Change Password</button></a></p>
-    </div>
+        <div class="card">
+            <h1><?php echo $_SESSION['username']; ?></h1>
+            <p class="title">Member</p>
+            <h2>Email: <?php echo $_SESSION['email']; ?> </h2>
+            <h2>UID: <?php echo $_SESSION['uid']; ?></h2>
+            <p><a href="./changePassword.php"><button>Change Password</button></a></p>
+        </div>
+
+    <?php } else { ?>
+        <div class="card">
+            <h1>login</h1>
+            <h1>to</h1>
+            <h1>access</h1>
+            <p><a href="./loginPage.php"><button>Login</button></a></p>
+        </div>
+    <?php } ?>
 
 
-    
 </body>

@@ -17,7 +17,7 @@ if (isset($_POST['adminlogin'])) {
         $_SESSION['email']="";
         $_SESSION['uid']="";
 
-        header("Location: /Library-E-Book/index.php");
+        header("Location: /Library-E-Book/php/adminProfile.php");
 
 
     } else {

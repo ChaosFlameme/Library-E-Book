@@ -51,7 +51,7 @@ $results = mysqli_query($connection, $query);
 
         <div class="header-1">
 
-            <a href="../index.php" class="logo"> <i class="fas fa-book"></i> bookly </a>
+            <a href="#" class="logo"> <i class="fas fa-book"></i> bookly </a>
 
 
             <h1 class="sub-header">Book Management</h1>
@@ -80,7 +80,7 @@ $results = mysqli_query($connection, $query);
             <nav class="navbar">
                 <a href="./adminProfile.php">home</a>
                 <a href="./adminBookListing.php">Book Management</a>
-                <a href="./adminUserListing.php">User Management</a>
+                <!-- <a href="./adminUserListing.php">User Management</a> -->
             </nav>
         </div>
 

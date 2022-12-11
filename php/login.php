@@ -15,7 +15,7 @@
             $_SESSION['email']=$row['email'];
             $_SESSION['uid']=$row['uid'];
 
-            //header("Location: /Library-E-Book/index.php");
+            header("Location: /Library-E-Book/index.php");
             
             
         }else{

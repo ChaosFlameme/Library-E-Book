@@ -39,7 +39,7 @@ $results = mysqli_query($connection, $query);
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- Paging js -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
@@ -53,7 +53,7 @@ $results = mysqli_query($connection, $query);
 
             <a href="../index.php" class="logo"> <i class="fas fa-book"></i> bookly </a>
 
-            <h1>Welcome back <?php echo $_SESSION['username']; ?></h1>
+            <h1><?php echo $_SESSION['username']; ?>'s bookshelf</h1>
 
             <div class="icons">
 
@@ -94,41 +94,48 @@ $results = mysqli_query($connection, $query);
 
     <div class="book-list">
 
-        <table border='1' cellpadding=5 cellspacing=2 id="data">
-            <tr>
-                <th class="action-col">Action</th>
-                <th>ISBN</th>
-                <th>Book Title</th>
-                <th>Author </th>
-                <th>Year publication</th>
-                <th>Pulisher</th>
-                <th>Cover</th>
-            </tr>
+        <?php if (mysqli_num_rows($results)==0) { ?>
+            <h1 style="text-align: center;">You havn't any book in shelf yet!</h1>
 
-            <?php while ($row = mysqli_fetch_assoc($results)) { ?>
+        <?php } else { ?>
 
+            <table border='1' cellpadding=5 cellspacing=2 id="data">
                 <tr>
-                    <td align="center">
-                        <form action="" method="post">
-                            <input type="hidden" name="ISBN" value="<?php echo $row['ISBN']; ?>">
-                            <!-- <a href="#"><input type="button" value="Detail"></a> | -->
-                            <input type="submit" value="remove" name="removeBook" class="btn">
-                        </form>
-                    </td>
-                    <td><?php echo $row['ISBN']; ?> </td>
-                    <td><?php echo $row['Book-Title']; ?> </td>
-                    <td><?php echo $row['Book-Author']; ?> </td>
-                    <td><?php echo $row['Year-Publication']; ?> </td>
-                    <td><?php echo $row['Publisher']; ?> </td>
-                    <td><img src=" <?php echo $row['Image-URL-M']; ?> " alt="book-cover"></td>
+                    <th class="action-col">Action</th>
+                    <th>ISBN</th>
+                    <th>Book Title</th>
+                    <th>Author </th>
+                    <th>Year publication</th>
+                    <th>Pulisher</th>
+                    <th>Cover</th>
                 </tr>
 
-            <?php } ?>
+                <?php while ($row = mysqli_fetch_assoc($results)) { ?>
 
-        </table>
+                    <tr>
+                        <td align="center">
+                            <form action="" method="post">
+                                <input type="hidden" name="ISBN" value="<?php echo $row['ISBN']; ?>">
+                                <!-- <a href="#"><input type="button" value="Detail"></a> | -->
+                                <input type="submit" value="remove" name="removeBook" class="btn">
+                            </form>
+                        </td>
+                        <td><?php echo $row['ISBN']; ?> </td>
+                        <td><?php echo $row['Book-Title']; ?> </td>
+                        <td><?php echo $row['Book-Author']; ?> </td>
+                        <td><?php echo $row['Year-Publication']; ?> </td>
+                        <td><?php echo $row['Publisher']; ?> </td>
+                        <td><img src=" <?php echo $row['Image-URL-M']; ?> " alt="book-cover"></td>
+                    </tr>
+
+                <?php } ?>
+
+            </table>
+
+        <?php } ?>
     </div>
 
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="fas fa-arrow-up"></button>
-    
+
     <script src="../js/pagination.js"></script>
 </body>

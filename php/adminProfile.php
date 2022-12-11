@@ -33,7 +33,7 @@ session_start();
 
         <div class="header-1">
 
-            <a href="../index.php" class="logo"> <i class="fas fa-book"></i> bookly </a>
+            <a href="#" class="logo"> <i class="fas fa-book"></i> bookly </a>
 
             <h1>Welcome to the Administrator Page </h1>
 
@@ -61,9 +61,9 @@ session_start();
             <nav class="navbar">
                 <a href="./adminProfile.php">home</a>
                 <a href="./adminBookListing.php">Book Management</a>
-                <a href="./adminUserListing.php">User Management</a>
+                <!-- <a href="./adminUserListing.php">User Management</a>  -->
             </nav>
-        </div>
+        </div> 
 
     </header>
 

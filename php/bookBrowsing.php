@@ -1,22 +1,21 @@
 <?php
 include "dbConnection.php";
 include "userBookRenting.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/Library-E-Book/php/login.php";
 
 session_start();
-
-$uid = $_SESSION['uid'];
-
-
 
 $query = "SELECT * 
 FROM   `books` 
 WHERE  `ISBN` NOT IN 
-(SELECT `ISBN` FROM `usersbookshelf` WHERE `userID` = '$uid')";
+(SELECT `ISBN` FROM `usersbookshelf`)";
 
 $results = mysqli_query($connection, $query);
 
 
 ?>
+
+
 <style>
     img {
         width: 100px;
@@ -72,14 +71,6 @@ $results = mysqli_query($connection, $query);
 
                 <div id="login-btn" class="fas fa-user"></div>
 
-                <?php if (!empty($_SESSION['username'])) {  ?>
-                    <!-- <a href="#" class="fas fa-heart"></a> -->
-                    <script>
-                        document.getElementById("login-btn").style.display = "none";
-                    </script>
-
-                    <a href="./logout.php" class="fas fa-sign-out-alt"></a>
-                <?php } ?>
             </div>
 
 
@@ -87,17 +78,39 @@ $results = mysqli_query($connection, $query);
 
         <div class="header-2">
             <nav class="navbar">
-                
-                    <?php if(!empty($_SESSION['username'])) ?>
-
-
-                <a href="./userprofile.php">home</a>
-                <a href="./userBookListing.php">My bookshelf</a>
-                <a href="./userBookBrowsing.php">Browsing Books</a>
+                <a href="../index.php">home</a>
+                <a href="#">Browsing Books</a>
             </nav>
         </div>
 
     </header>
+
+    <!-- login form  -->
+
+    <div class="login-form-container real-login-form-container">
+
+        <div id="close-login-btn" class="fas fa-times"></div>
+
+        <form action="" method="POST">
+            <h3>sign in</h3>
+            <span>username</span>
+            <input required type="text" name="txtUsername" class="box" placeholder="enter your username" id="txtUsername">
+            <span>password</span>
+            <input required type="password" name="txtPassword" class="box" placeholder="enter your password" id="txtPassword">
+
+            <div class="checkbox">
+                <input type="checkbox" value="isRememberMe" name="" id="remember-me">
+                <label for="remember-me"> remember me</label>
+            </div>
+            <input type="submit" value="login" name="login" class="btn" onclick="IsRememberMe()">
+
+            <p>don't have an account ? <a href="../Library-E-Book/php/registeration.php">create one</a></p>
+            <p><a href="../Library-E-Book/php/loginAdmin.php">Admin Login</a></p>
+
+        </form>
+
+    </div>
+
 
     <div class="listing-search-bar">
         <form action="" class="search-form">
@@ -148,6 +161,8 @@ $results = mysqli_query($connection, $query);
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="fas fa-arrow-up"></button>
 
     <script src="../js/pagination.js"></script>
+    <script src="../js/login.js"></script>
+
 </body>
 
 </html>
