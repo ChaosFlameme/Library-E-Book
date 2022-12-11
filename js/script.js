@@ -1,3 +1,5 @@
+
+
 searchForm = document.querySelector('.search-form');
 
 document.querySelector('#search-btn').onclick = () => {
@@ -38,6 +40,7 @@ window.onload = () => {
   fadeOut();
 
 }
+
 
 // function loader() {
 //   document.querySelector('.loader-container').classList.add('active');

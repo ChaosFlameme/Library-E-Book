@@ -1,6 +1,6 @@
 <?php
 include "dbConnection.php";
-
+session_destroy();
 session_start();
 if (isset($_POST['adminlogin'])) {
     $username = $_POST['txtAdminID'];
@@ -55,7 +55,7 @@ if (isset($_POST['adminlogin'])) {
             <input required type="password" name="txtAdminPassword" class="box" placeholder="enter your password" id="txtAdminPassword">
             <input type="submit" value="login" name="adminlogin" class="btn" >
             <p>Please contact your supervisor for any case</p>
-
+            <a href="../index.php"></a><p>Back to main page</p>
         </form>
     </div>
 </body>

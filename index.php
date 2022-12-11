@@ -17,6 +17,7 @@
 
     <?php
     require $_SERVER['DOCUMENT_ROOT'] . "/Library-E-Book/php/login.php";
+    include "./php/dbConnection.php";
     session_start();
     ?>
 </head>
@@ -38,21 +39,19 @@
 
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
-              
+
                 <!---a href="#" class="fas fa-shopping-cart"></a-->
 
                 <div id="login-btn" class="fas fa-user"></div>
-                <?php if (empty($_SESSION['username'])) { ?>
-                <?php } ?>
 
                 <?php if (!empty($_SESSION['username'])) {  ?>
-                    <a href="#" class="fas fa-heart"></a>
+                    <!-- <a href="#" class="fas fa-heart"></a> -->
                     <script>
                         document.getElementById("login-btn").style.display = "none";
                     </script>
                     <?php if (!empty($_SESSION['adminName'])) { ?>
                         <a href="../Library-E-Book/php/adminProfile.php" class="fas fa-user-graduate"></a>
-                    <?php } else { ?> 
+                    <?php } else { ?>
                         <a href="../Library-E-Book/php/userprofile.php" class="fas fa-user"></a>
                     <?php } ?>
                     <a href="../Library-E-Book/php/logout.php" class="fas fa-sign-out-alt"></a>
@@ -61,7 +60,7 @@
             <?php
             if (!empty($_SESSION['username'])) {
             ?>
-                <div>
+                <div class="index">
                     <h1>
                         Welcome back <?php echo $_SESSION['username']; ?>
                     </h1>
@@ -128,19 +127,18 @@
         <div class="row">
 
             <div class="content">
-                <h3>upto 75% off</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid ex minima at!</p>
-                <a href="#" class="btn">shop now</a>
+                <h3>Browse our choice</h3>
+                <p>
+                    We are excited to recommend to our readers our weekly updated books. Each week, our team of librarians and book experts carefully curates a list of potential books and then selects one that we believe will be of particular interest to our members.
+                </p>
+                <a href="#" class="btn">Browse now</a>
             </div>
 
             <div class="swiper books-slider">
                 <div class="swiper-wrapper">
-                    <a href="#" class="swiper-slide"><img src="image/book-1.png" alt=""></a>
-                    <a href="#" class="swiper-slide"><img src="image/book-2.png" alt=""></a>
-                    <a href="#" class="swiper-slide"><img src="image/book-3.png" alt=""></a>
-                    <a href="#" class="swiper-slide"><img src="image/book-4.png" alt=""></a>
-                    <a href="#" class="swiper-slide"><img src="image/book-5.png" alt=""></a>
-                    <a href="#" class="swiper-slide"><img src="image/book-6.png" alt=""></a>
+                    <a href="" class="swiper-slide"><img src="http://images.amazon.com/images/P/0060575808.01.LZZZZZZZ.jpg" alt=""></a>
+                    <a href="" class="swiper-slide"><img src="http://images.amazon.com/images/P/0380715899.01.LZZZZZZZ.jpg" alt=""></a>
+                    <a href="" class="swiper-slide"><img src="http://images.amazon.com/images/P/0380730448.01.LZZZZZZZ.jpg" alt=""></a>
                 </div>
                 <img src="image/stand.png" class="stand" alt="">
             </div>
@@ -156,26 +154,26 @@
     <section class="icons-container">
 
         <div class="icons">
-            <i class="fas fa-shipping-fast"></i>
+            <i class="fas fa-book"></i>
             <div class="content">
-                <h3>free shipping</h3>
-                <p>order over $100</p>
+                <h3>various choice</h3>
+                <p>order over 1000 books</p>
             </div>
         </div>
 
         <div class="icons">
             <i class="fas fa-lock"></i>
             <div class="content">
-                <h3>secure payment</h3>
-                <p>100 secure payment</p>
+                <h3>secure account</h3>
+                <p>100 secure account</p>
             </div>
         </div>
 
         <div class="icons">
             <i class="fas fa-redo-alt"></i>
             <div class="content">
-                <h3>easy returns</h3>
-                <p>10 days returns</p>
+                <h3>easy browsing</h3>
+                <p>easy to find</p>
             </div>
         </div>
 
@@ -202,164 +200,135 @@
             <div class="swiper-wrapper">
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '380817144'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-1.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '380715899'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-2.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '380820447'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-3.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '415928087'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-4.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '380759497'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-5.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
                 <div class="swiper-slide box">
-                    <div class="icons">
+                    <?php 
+                        $query="SELECT * FROM books WHERE `ISBN` = '038078243X'";
+                        $result=mysqli_query($connection,$query);
+                        $row=mysqli_fetch_assoc($result);
+                    ?>
+                    <!-- <div class="icons">
                         <a href="#" class="fas fa-search"></a>
                         <a href="#" class="fas fa-heart"></a>
                         <a href="#" class="fas fa-eye"></a>
-                    </div>
+                    </div> -->
                     <div class="image">
-                        <img src="image/book-6.png" alt="">
+                        <img src='<?php echo $row["Image-URL-L"]?>' alt="">
                     </div>
                     <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
+                        <h3><?php echo $row['Book-Title']?></h3>
+                        <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
+                        <a href="#" class="btn">add to shelf</a>
                     </div>
                 </div>
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-7.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
+                
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-8.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
+                
 
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-9.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
-
-                <div class="swiper-slide box">
-                    <div class="icons">
-                        <a href="#" class="fas fa-search"></a>
-                        <a href="#" class="fas fa-heart"></a>
-                        <a href="#" class="fas fa-eye"></a>
-                    </div>
-                    <div class="image">
-                        <img src="image/book-10.png" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>featured books</h3>
-                        <div class="price">$15.99 <span>$20.99</span></div>
-                        <a href="#" class="btn">add to cart</a>
-                    </div>
-                </div>
 
             </div>
 

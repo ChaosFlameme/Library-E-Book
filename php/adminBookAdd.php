@@ -42,12 +42,12 @@ if (isset($_POST['addBook'])) {
 
     //Check if there's no error
     if (count($errors) == 0) {
-        echo $ISBN . "|";
-        echo $bookTitle. "|";
-        echo $author. "|";
-        echo $yearPublication. "|";
-        echo $publisher. "|";
-        echo $cover_l;
+        // echo $ISBN . "|";
+        // echo $bookTitle. "|";
+        // echo $author. "|";
+        // echo $yearPublication. "|";
+        // echo $publisher. "|";
+        // echo $cover_l;
 
         $query = "INSERT INTO `books` (`ISBN`, `Book-Title`, `Book-Author`, `Year-Publication`, `Publisher`, `Image-URL-L`)
     VALUES ('$ISBN', '$bookTitle','$author','$yearPublication','$publisher', '$cover_l')";
@@ -60,17 +60,16 @@ if (isset($_POST['addBook'])) {
         }
     }else{
         foreach($errors as $error) {
-            echo $error, '<br>';
+            //echo $error, '<br>';
         }
     }
 }
 
-mysqli_close($connection);
 
 //https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-6.png
 ?>
 
-
+<!-- 
 <html>
 <body>
         <form action="" method="POST">
@@ -99,4 +98,4 @@ mysqli_close($connection);
         </form>
 </body>
 
-</html>
+</html> -->

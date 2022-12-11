@@ -9,7 +9,6 @@ $query = "SELECT * FROM users";
 
 $results = mysqli_query($connection, $query);
 
-mysqli_close($connection);
 ?>
 
 <html>
