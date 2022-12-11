@@ -324,7 +324,12 @@
                     <div class="content">
                         <h3><?php echo $row['Book-Title'] ?></h3>
                         <!-- <div class="price">$15.99 <span>$20.99</span></div> -->
-                        <a href="#" class="btn">add to shelf</a>
+                       
+                        <form action="" method="post">
+                            <input type="hidden" name="<?php echo $row['ISBN']; ?>">
+                            <input type="submit" value="add to shelf" name="rentBook" class="btn">
+                            <!-- <a href="#" class="btn">add to shelf</a> -->
+                        </form>
                     </div>
                 </div>
 
@@ -377,10 +382,6 @@
                         </form>
                     </div>
                 </div>
-
-
-
-
 
 
             </div>
