@@ -72,6 +72,5 @@ session_start();
         <h1><?php echo $_SESSION['adminName']; ?></h1>
         <p class="title">Administrator</p>
         <h2>adminID: <?php echo $_SESSION['adminID']; ?> </h2>
-        <p><a href=""><button>Change Password</button></a></p>
     </div>
 </body>
